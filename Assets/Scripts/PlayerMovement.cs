@@ -21,7 +21,19 @@ public class PlayerMovement : MonoBehaviour
         float movement = Input.GetAxis("Horizontal") * Time.deltaTime * movementSpeed;
         if (movement != 0&& anim.GetCurrentAnimatorStateInfo(0).IsName("isAttack") == false)
         {
-            anim.SetBool("isRun", true);
+            if (movement > 0.05f || movement < -0.05f)
+            {
+                anim.SetBool("isRun", true);//速度大于0.5才能开始跑步
+                if(Input.GetKeyDown(KeyCode.S))
+                {
+                    anim.SetBool("isRun", false);
+                    anim.SetTrigger("isRoll");//在跑步过程中才能够进行Roll动作，且跑步状态解除
+                }
+            }
+            else
+            {
+                anim.SetBool("isRun", false);//小于0.5边踱步
+            }//需要更改增加踱步的状态！！！！！！！！！！！！！！！
             anim.SetBool("isIdle", false);
             // 如果movement值大于0，这表示玩家对象向右移动，所以将玩家对象向右转并进行移动
             if (movement > 0)
