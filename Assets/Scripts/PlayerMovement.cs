@@ -29,6 +29,10 @@ public class PlayerMovement : MonoBehaviour
                     anim.SetBool("isRun", false);
                     anim.SetTrigger("isRoll");//在跑步过程中才能够进行Roll动作，且跑步状态解除
                 }
+                else
+                {
+                    anim.SetBool("isRun", true);//恢复跑步
+                }
             }
             else
             {
