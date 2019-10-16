@@ -32,7 +32,6 @@ public class BattleMenu : MonoBehaviour
     {
 
         if (!IsGamePaused)
-
             return;
 
         ///自动布局，按照区域
